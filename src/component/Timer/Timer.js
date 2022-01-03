@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './Timer.css';
 
 class Timer extends Component {
     constructor() {
@@ -32,7 +33,7 @@ class Timer extends Component {
         this.setState({
             alert: {
                 type: 'work',
-                message: 'working'
+                message: 'Working'
             }
         });
         return this.setTime(this.times.defaultTime);
@@ -41,8 +42,8 @@ class Timer extends Component {
     setTimeForShortBreak = () => {
         this.setState({
             alert: {
-                type: 'short',
-                message: 'short break'
+                type: 'shortBreak',
+                message: 'Short break'
             }
         });
         return this.setTime(this.times.shortBrak);
@@ -51,8 +52,8 @@ class Timer extends Component {
     setTimeForLongBreak = () => {
         this.setState({
             alert: {
-                type: 'long',
-                message: 'long break'
+                type: 'longBreak',
+                message: 'Long break'
             }
         });
         return this.setTime(this.times.longBreak);
@@ -87,8 +88,8 @@ class Timer extends Component {
     }
 
     displayTime = (seconds) => {
-        const m = Math.floor(seconds & 3600 / 60);
-        const s = Math.floor(seconds & 3600 & 60);
+        const m = Math.floor(seconds % 3600 / 60);
+        const s = Math.floor(seconds % 3600 % 60);
         return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
     }
 
